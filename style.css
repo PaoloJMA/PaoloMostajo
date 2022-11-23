@@ -135,3 +135,13 @@ footer > h2{
     background-color: #2185D5;
     color: white;
 }
+.tamaño{
+    width: 900px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+li{
+    font-size: 18px;
+    margin: 5px;
+}
