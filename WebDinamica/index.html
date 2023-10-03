@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Formulario de Registro</h1>
+    <form id="formulario" action="#" method="post">
+        <label for="nombre">Nombre y Apellidos:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      
+        <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+      
+        <label for="ocupacion">Ocupación:</label>
+        <input type="text" id="ocupacion" name="ocupacion" required>
+      
+        <label for="contacto-telefono">Teléfono:</label>
+        <input type="tel" id="contacto-telefono" name="contacto-telefono" required>
+      
+        <label for="contacto-email">Email:</label>
+        <input type="email" id="contacto-email" name="contacto-email" required>
+      
+        <label for="nacionalidad">Nacionalidad:</label>
+        <select id="nacionalidad" name="nacionalidad" required>
+            <option value="">Selecciona tu país</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Chile">Chile</option>
+            <option value="Colombia">Colombia</option>
+            <option value="uruguay">Uruguay</option>
+            <option value="ecuador">Ecuador</option>
+            <option value="guatemala">Guatemala</option>
+            <option value="nicaragua">Nicaragua</option>
+            <option value="panama">Panamá</option>
+            <option value="paraguay">Paraguay</option>
+            <option value="peru">Perú</option>
+            <option value="uruguay">Uruguay</option>
+            <option value="venezuela">Venezuela</option>
+          </select>
+          
+        </select>
+        <label for="nivel-ingles">Nivel de inglés:</label>
+        <label for="Basico">Básico</label>
+        <input type="radio" id="Basico" name="nivel-ingles" value="Basico">
+        <label for="Intermedio">Intermedio</label>
+        <input type="radio" id="Intermedio" name="nivel-ingles" value="Intermedio">
+        <label for="Avanzado">Avanzado</label>
+        <input type="radio" id="Avanzado" name="nivel-ingles" value="Avanzado">
+        <label for="Fluido">Fluido</label>
+        <input type="radio" id="Fluido" name="nivel-ingles" value="Fluido">
+
+        <label for="lenguajes-programacion">Lenguajes de programación:</label>
+        <select id="lenguajes-programacion" name="lenguajes-programacion" multiple>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="html">HTML</option>
+            <option value="c++">C++</option>
+            <option value="c">C</option>
+            <option value="PHP">PHP</option>
+        </select>
+      
+        <label for="formacion">Formación:</label>
+        <label for="Primaria">Primaria</label>
+        <input type="radio" id="Primaria" name="formacion" value="Primaria">
+        <label for="Secundaria">Secundaria</label>
+        <input type="radio" id="Secundaria" name="formacion" value="Secundaria">
+        <label for="CarreraT">Carrera Técnica</label>
+        <input type="radio" id="CarreraT" name="formacion" value="CarreraT">
+        <label for="Universitaria">Universitaria</label>
+        <input type="radio" id="Universitaria" name="formacion" value="Universitaria">
+        <label for="Magist">Magister</label>
+        <input type="radio" id="Magister" name="formacion" value="Magister">
+        <label for="Doct">Doctorado</label>
+        <input type="radio" id="Doctorado" name="formacion" value="Doctorado">
+
+        <label for="aptitudes">Aptitudes:</label>
+        <input type="text" id="aptitudes" name="aptitudes" list="lista-aptitudes">
+        <datalist id="lista-aptitudes">
+            <option value="Liderazgo">
+            <option value="Espíritu de adaptación">
+            <option value="Comunicación">
+            <option value="Trabajo en equipo">
+            <option value="Resciliencia">
+                </option>
+        </datalist>
+        <label for="habilidades">Habilidades:</label>
+        <label for="Escucha y habla">Escucha y habla</label>
+        <input type="checkbox" id="Escucha y habla" name="habilidades" value="Escucha y habla">
+        <label for="Trabajo conjunto">Trabajo conjunto</label>
+        <input type="checkbox" id="Trabajo conjunto" name="habilidades" value="Trabajo conjunto">
+        <label for="Eficacia">Eficacia</label>
+        <input type="checkbox" id="Eficacia" name="habilidades" value="Eficacia">
+        <label for="Orden">Orden</label>
+        <input type="checkbox" id="Orden" name="habilidades" value="Orden">
+
+        <label for="perfil">Perfil:</label>
+        <textarea id="perfil" name="perfil"></textarea>
+      
+        <button type="button" onclick="abrirNuevaPestana()">Enviar</button>
+
+        <script>
+            function abrirNuevaPestana() {
+                var nombre = document.getElementById("nombre").value;
+                var correo = document.getElementById("contacto-email").value;
+                var telefono = document.getElementById("contacto-telefono").value;
+                var ocu = document.getElementById("ocupacion").value;
+                var fecha = document.getElementById("fecha-nacimiento").value;
+                var naci = document.getElementById("nacionalidad").value;
+                var nivelIngles = document.querySelector('input[name="nivel-ingles"]:checked').value;
+                var lengua_pro = Array.from(document.querySelectorAll("#lenguajes-programacion option:checked"))
+                    .map(option => option.value);
+                var Formacion= document.querySelector('input[name="formacion"]:checked').value;
+                
+                var aptitudes = document.getElementById("aptitudes").value;
+                var habilidades = Array.from(document.querySelectorAll('input[name="habilidades"]:checked'))
+                    .map(checkbox => checkbox.value);
+                var perfil = document.getElementById("perfil").value;
+
+                if (nombre === "" || correo === "" || telefono === "" || ocu === "" || fecha === "" || naci === "" || nivelIngles === undefined || lengua_pro.length === 0 || aptitudes === "" || habilidades.length === 0 || perfil === "") {
+                    alert("Todos los campos son obligatorios");
+                } else {
+                    var contenido = "<h1>DATOS INGRESADOS EN EL FORMULARIO:</h1>";
+                    contenido += "<p>Nombre: " + nombre + "</p>";
+                    contenido += "<p>Correo electrónico: " + correo + "</p>";
+                    contenido += "<p>Teléfono: " + telefono + "</p>";
+                    contenido += "<p>Ocupación: " + ocu + "</p>";
+                    contenido += "<p>Fecha de Nacimiento: " + fecha + "</p>";
+                    contenido += "<p>Nacionalidad: " + naci + "</p>";
+                    contenido += "<p>Nivel de inglés: " + nivelIngles + "</p>";
+                    contenido += "<p>Lenguajes de Programación: " + lengua_pro.join(", ") + "</p>";
+                    contenido += "<p>Formación: " + Formacion + "</p>";
+                    contenido += "<p>Aptitudes: " + aptitudes + "</p>";
+                    contenido += "<p>Habilidades: " + habilidades.join(", ") + "</p>";
+                    contenido += "<p>Perfil: " + perfil + "</p>";
+
+                    var nuevaPestana = window.open();
+                    nuevaPestana.document.write(contenido);
+                }
+            }
+        </script>
+    </form>
+</body>
+</html>
